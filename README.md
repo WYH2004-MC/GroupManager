@@ -24,6 +24,7 @@ top.wyh2004.group-manager.command.GroupManager    #GroupManager主指令权限
 
 ## 指令
 ```
+/groupmanager info      #显示插件信息
 /groupmanager reload    #重载插件配置文件
 ```
 

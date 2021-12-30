@@ -3,6 +3,7 @@ package top.wyh2004.group.manager.plugin.command
 import net.mamoe.mirai.console.command.CommandSender
 import net.mamoe.mirai.console.command.CompositeCommand
 import net.mamoe.mirai.console.permission.PermissionService.Companion.hasPermission
+import net.mamoe.mirai.console.plugin.version
 import net.mamoe.mirai.utils.MiraiLogger
 import top.wyh2004.group.manager.plugin.PluginMain
 
@@ -31,6 +32,7 @@ object GroupManagerCommand : CompositeCommand(
     suspend fun CommandSender.info() {
         val pluginInfo =
             "=== GroupManager ===\n" +
+            "版本：${PluginMain.version}" +
             "作者: WYH2004\n" +
             "项目地址:\n" +
             "https://github.com/VIPWYH2004/GroupManager"
