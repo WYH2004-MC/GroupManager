@@ -1,4 +1,4 @@
-package org.example.mirai.plugin
+package top.wyh2004.group.manager.plugin
 
 import net.mamoe.mirai.alsoLogin
 import net.mamoe.mirai.console.MiraiConsole
