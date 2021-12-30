@@ -2,7 +2,6 @@
 
 > [Mirai 官方项目仓库](https://github.com/mamoe/mirai)
 
-
 ## 简介
 基于 [mirai-console](https://github.com/mamoe/mirai-console) 框架开发的群管理插件, 使用 Kotlin + Gradle 开发.
 
@@ -18,6 +17,9 @@
 5. 完成
 
 ## 插件权限
+```
+top.wyh2004.group-manager.command.GroupManager    #GroupManager主指令权限
+```
 
 ## 指令
 ```
