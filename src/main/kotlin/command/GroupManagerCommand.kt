@@ -26,5 +26,15 @@ object GroupManagerCommand : CompositeCommand(
             logger.error(ex)
         }
     }
+
+    @SubCommand("info","信息")
+    suspend fun CommandSender.info() {
+        val pluginInfo =
+            "=== GroupManager ===\n" +
+            "作者: WYH2004\n" +
+            "项目地址:\n" +
+            "https://github.com/VIPWYH2004/GroupManager"
+        sendMessage(pluginInfo)
+    }
 }
 
