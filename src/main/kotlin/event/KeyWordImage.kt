@@ -15,7 +15,7 @@ import kotlin.random.Random
  **/
 class KeyWordImage : SimpleListenerHost() {
     val skipJava = listOf<String>("跳过java基础的bukkit玩家","没学java","跳过java", "未学java")
-    val iDontKnowList = listOf<String>("为什么","是什么","怎么做","求助","怎么办","怎么弄","怎么实现","咋弄","咋办","为啥")
+    val iDontKnowList = listOf<String>("为什么","是什么","怎么做","求助","怎么办","怎么弄","怎么实现","咋弄","咋办","为啥","请问","怎么写")
     val NPE = listOf<String>("nullpointerexception","npe","null","空指针")
 
     @EventHandler
