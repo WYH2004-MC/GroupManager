@@ -10,6 +10,7 @@ import net.mamoe.mirai.utils.info
 import top.wyh2004.group.manager.plugin.command.GroupManagerCommand
 import top.wyh2004.group.manager.plugin.command.Minecraft
 import top.wyh2004.group.manager.plugin.config.GroupManagerConfig
+import top.wyh2004.group.manager.plugin.config.KeyWordImageConfig
 import top.wyh2004.group.manager.plugin.event.GroupRequestAutoAccept
 import top.wyh2004.group.manager.plugin.event.KeyWordImage
 import top.wyh2004.group.manager.plugin.event.MemberJoinQuitGroupMessage
@@ -18,7 +19,7 @@ object PluginMain : KotlinPlugin(
     JvmPluginDescription(
         id = "top.wyh2004.group-manager",
         name = "GroupManager",
-        version = "0.1.3"
+        version = "0.1.4"
     ) {
         author("WYH2004")
     }
@@ -43,6 +44,7 @@ object PluginMain : KotlinPlugin(
 
     private fun regConfig(){
         GroupManagerConfig.reload()
+        KeyWordImageConfig.reload()
     }
 
     private fun regListener(){
