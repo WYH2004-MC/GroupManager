@@ -26,8 +26,8 @@ class KeyWordImage : SimpleListenerHost() {
         if (KeyWordImageConfig.autoSendImageGroupList.contains(group.id)){
             val msg:String = message.toString().lowercase()
             if(StringUtils.containsList(skipJava,msg)){
-                var ex = PluginMain::class.java.getResourceAsStream("/img/skipJava.jpg")!!.toExternalResource("jpg")
-                var img = group.uploadImage(ex)
+                val ex = PluginMain::class.java.getResourceAsStream("/img/skipJava.jpg")!!.toExternalResource("jpg")
+                val img = group.uploadImage(ex)
                 ex.close()
                 group.sendMessage(img)
                 return
@@ -40,14 +40,14 @@ class KeyWordImage : SimpleListenerHost() {
                     1 -> ex = PluginMain::class.java.getResourceAsStream("/img/youCanSearch1.jpg")!!.toExternalResource("jpg")
                     2 -> ex = PluginMain::class.java.getResourceAsStream("/img/youCanSearch2.jpg")!!.toExternalResource("jpg")
                 }
-                var img = group.uploadImage(ex)
+                val img = group.uploadImage(ex)
                 ex.close()
                 group.sendMessage(img)
                 return
             }
             if(StringUtils.containsList(NPE,msg)){
-                var ex = PluginMain::class.java.getResourceAsStream("/img/NPE.jpg")!!.toExternalResource("jpg")
-                var img = group.uploadImage(ex)
+                val ex = PluginMain::class.java.getResourceAsStream("/img/NPE.jpg")!!.toExternalResource("jpg")
+                val img = group.uploadImage(ex)
                 ex.close()
                 group.sendMessage(img)
                 return
