@@ -2,7 +2,6 @@ package top.wyh2004.group.manager.plugin.event
 
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.SimpleListenerHost
-import net.mamoe.mirai.event.events.MemberJoinEvent
 import net.mamoe.mirai.event.events.MemberJoinRequestEvent
 import top.wyh2004.group.manager.plugin.config.GroupManagerConfig
 import top.wyh2004.group.manager.plugin.utils.StringUtils

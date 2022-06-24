@@ -8,7 +8,6 @@ import net.mamoe.mirai.event.events.MemberLeaveEvent
 import net.mamoe.mirai.message.data.At
 import net.mamoe.mirai.message.data.Message
 import net.mamoe.mirai.message.data.PlainText
-import net.mamoe.mirai.message.data.toPlainText
 import top.wyh2004.group.manager.plugin.config.GroupManagerConfig
 
 /**

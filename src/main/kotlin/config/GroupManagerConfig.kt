@@ -3,7 +3,6 @@ package top.wyh2004.group.manager.plugin.config
 import net.mamoe.mirai.console.data.ReadOnlyPluginConfig
 import net.mamoe.mirai.console.data.ValueDescription
 import net.mamoe.mirai.console.data.value
-import java.util.*
 
 
 /**

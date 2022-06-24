@@ -2,7 +2,6 @@ package top.wyh2004.group.manager.plugin.command
 
 import net.mamoe.mirai.console.command.CommandSender
 import net.mamoe.mirai.console.command.CompositeCommand
-import net.mamoe.mirai.console.permission.PermissionService.Companion.hasPermission
 import net.mamoe.mirai.console.plugin.version
 import net.mamoe.mirai.utils.MiraiLogger
 import top.wyh2004.group.manager.plugin.PluginMain
@@ -16,7 +15,7 @@ object GroupManagerCommand : CompositeCommand(
     primaryName = "GroupManager",
     description = "GroupManager"
     ){
-    var logger : MiraiLogger = PluginMain.logger
+    private var logger : MiraiLogger = PluginMain.logger
 
     @SubCommand("reload","重载")
     suspend fun CommandSender.reload() {
