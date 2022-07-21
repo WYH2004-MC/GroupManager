@@ -9,6 +9,7 @@
 - 进群自动欢迎
 - 退群自动欢送
 - 加群自动审核
+- 寄寄子抽签
 
 ## 下载＆使用
 1. [releases](https://github.com/VIPWYH2004/GroupManager/releases) 下载并放到 `plugin` 文件夹中

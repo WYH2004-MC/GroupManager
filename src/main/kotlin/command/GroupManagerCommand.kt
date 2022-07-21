@@ -5,6 +5,7 @@ import net.mamoe.mirai.console.command.CompositeCommand
 import net.mamoe.mirai.console.plugin.version
 import net.mamoe.mirai.utils.MiraiLogger
 import top.wyh2004.group.manager.plugin.PluginMain
+import top.wyh2004.group.manager.plugin.TextCommand.Sortition
 
 /**
  * @author WYH2004
@@ -36,6 +37,16 @@ object GroupManagerCommand : CompositeCommand(
             "项目地址:\n" +
             "https://github.com/VIPWYH2004/GroupManager"
         sendMessage(pluginInfo)
+    }
+
+    @SubCommand("sortition","抽签")
+    suspend fun CommandSender.sortition(){
+        try {
+            Sortition.clearList()
+            sendMessage("已重载抽签记录!")
+        } catch (ex: Exception) {
+            logger.error(ex)
+        }
     }
 }
 

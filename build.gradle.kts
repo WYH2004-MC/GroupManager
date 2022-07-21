@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "top.wyh2004"
-version = "0.1.4"
+version = "0.1.5"
 
 repositories {
     mavenLocal()
