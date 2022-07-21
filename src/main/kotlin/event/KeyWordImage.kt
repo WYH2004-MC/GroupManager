@@ -37,7 +37,8 @@ class KeyWordImage : SimpleListenerHost() {
                     "/img/iDontKnow.jpg",
                     "/img/youCanSearch1.jpg",
                     "/img/youCanSearch2.jpg",
-                    "/img/giveMeMoney.jpg"
+                    "/img/giveMeMoney.jpg",
+                    "/img/fixBrain.jpg"
                 )
                 val ex = PluginMain::class.java.getResourceAsStream(imgList.random())!!.toExternalResource()
                 val img = group.uploadImage(ex)
