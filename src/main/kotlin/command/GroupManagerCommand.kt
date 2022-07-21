@@ -43,7 +43,7 @@ object GroupManagerCommand : CompositeCommand(
     suspend fun CommandSender.sortition(){
         try {
             Sortition.clearList()
-            sendMessage("已重载抽签记录!")
+            sendMessage("已重置抽签记录!")
         } catch (ex: Exception) {
             logger.error(ex)
         }
