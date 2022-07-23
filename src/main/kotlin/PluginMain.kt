@@ -9,8 +9,10 @@ import net.mamoe.mirai.event.registerTo
 import net.mamoe.mirai.utils.info
 import top.wyh2004.group.manager.plugin.TextCommand.Sortition
 import top.wyh2004.group.manager.plugin.command.GroupManagerCommand
+import top.wyh2004.group.manager.plugin.command.HelpCommand
 import top.wyh2004.group.manager.plugin.command.Minecraft
 import top.wyh2004.group.manager.plugin.config.GroupManagerConfig
+import top.wyh2004.group.manager.plugin.config.HelpConfig
 import top.wyh2004.group.manager.plugin.config.KeyWordImageConfig
 import top.wyh2004.group.manager.plugin.event.GroupRequestAutoAccept
 import top.wyh2004.group.manager.plugin.event.KeyWordImage
@@ -22,7 +24,7 @@ object PluginMain : KotlinPlugin(
     JvmPluginDescription(
         id = "top.wyh2004.group-manager",
         name = "GroupManager",
-        version = "0.1.5"
+        version = "0.1.6"
     ) {
         author("WYH2004")
     }
@@ -46,6 +48,7 @@ object PluginMain : KotlinPlugin(
 
     private fun regCommand() {
         GroupManagerCommand.register()
+        HelpCommand.register()
         CommandManager.registerCommand(Minecraft(),true)
     }
 
@@ -56,6 +59,7 @@ object PluginMain : KotlinPlugin(
     private fun regConfig(){
         GroupManagerConfig.reload()
         KeyWordImageConfig.reload()
+        HelpConfig.reload()
     }
 
     private fun regListener(){
