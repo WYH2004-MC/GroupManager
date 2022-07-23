@@ -15,13 +15,14 @@
 ## 下载＆使用
 1. [releases](https://github.com/VIPWYH2004/GroupManager/releases) 下载并放到 `plugin` 文件夹中
 2. 启动你的Mirai
-3. 根据你的需求配置插件的配置文件(路径`/config/GroupManager/`)
+3. 根据你的需求配置插件的配置文件(路径`/config/top.wyh2004.group-manager/`)
 4. 重启Mirai或者使用`/groupmanager reload`指令重载配置文件
 5. 完成
 
 ## 插件权限
 ```
 top.wyh2004.group-manager.command.GroupManager    #GroupManager主指令权限
+top.wyh2004.group-manager.command.帮助            #输出帮助信息
 ```
 
 ## 指令
