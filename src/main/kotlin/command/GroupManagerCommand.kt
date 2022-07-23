@@ -42,8 +42,14 @@ object GroupManagerCommand : CompositeCommand(
     @SubCommand("sortition","抽签")
     suspend fun CommandSender.sortition(){
         try {
-            Sortition.clearList()
-            sendMessage("已重置抽签记录!")
+            this.user?.let {
+                Sortition.resetMap[it.id] = Sortition.resetMap[it.id]?.plus(1) ?: 1
+                Sortition.qqSortitionList.remove(it.id)
+                sendMessage("已重置你的抽签记录!")
+            } ?: run {
+                Sortition.clearList()
+                sendMessage("已重置抽签记录!")
+            }
         } catch (ex: Exception) {
             logger.error(ex)
         }
