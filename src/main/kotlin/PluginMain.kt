@@ -1,5 +1,7 @@
 package top.wyh2004.group.manager.plugin
 
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.cancel
 import net.mamoe.mirai.console.command.CommandManager
 import net.mamoe.mirai.console.command.CommandManager.INSTANCE.register
 import net.mamoe.mirai.console.plugin.jvm.JvmPluginDescription
@@ -29,6 +31,7 @@ object PluginMain : KotlinPlugin(
         author("WYH2004")
     }
 ) {
+
     override fun onEnable() {
         logger.info { "GroupManager 已启动! --- Author:WYH2004" }
         //配置文件目录 "${dataFolder.absolutePath}/"
@@ -44,6 +47,7 @@ object PluginMain : KotlinPlugin(
 
     override fun onDisable() {
         logger.info("GroupManager 已卸载!")
+        this.cancel()
     }
 
     private fun regCommand() {

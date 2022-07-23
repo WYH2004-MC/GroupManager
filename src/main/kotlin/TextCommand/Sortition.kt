@@ -20,8 +20,33 @@ class Sortition() : SimpleListenerHost() {
     @EventHandler
     suspend fun GroupMessageEvent.onEvent(){
         if (message.toString().contains("#抽签")){
+            val times = resetMap[sender.id]
+            if (times != null && !qqSortitionList.contains(sender.id)) {
+                if (times > 3) {
+                    group.sendMessage(At(sender.id) + PlainText("\n") + "你今天已经抽过签了!")
+                    return
+                }
+                val imgList = listOf(
+                    "/img/sortition/---.jpg",
+                    "/img/sortition/----.jpg",
+                    "/img/sortition/-----.jpg"
+                )
+                val ex = PluginMain::class.java.getResourceAsStream(imgList[times - 1])!!.toExternalResource()
+                val img = group.uploadImage(ex)
+                withContext(Dispatchers.IO) {
+                    ex.close()
+                }
+                val msg = buildMessageChain {
+                    +At(sender.id)
+                    +PlainText("\n")
+                    +img
+                }
+                group.sendMessage(msg)
+                qqSortitionList.add(sender.id)
+                return
+            }
             if (!qqSortitionList.contains(sender.id)){
-                val imgList = listOf<String>(
+                val imgList = listOf(
                     "/img/sortition/--.jpg",
                     "/img/sortition/-.jpg",
                     "/img/sortition/-+.jpg",
@@ -49,6 +74,7 @@ class Sortition() : SimpleListenerHost() {
     }
 
     companion object {
+        val resetMap = mutableMapOf<Long, Int>()
         var qqSortitionList : MutableList<Long> = mutableListOf()
         fun clearList() {
             qqSortitionList.clear()
