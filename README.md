@@ -9,6 +9,7 @@
 - 进群自动欢迎
 - 退群自动欢送
 - 加群自动审核
+- 显示自定义帮助信息
 - 寄寄子抽签
 
 ## 下载＆使用
@@ -27,6 +28,9 @@ top.wyh2004.group-manager.command.GroupManager    #GroupManager主指令权限
 ```
 /groupmanager info      #显示插件信息
 /groupmanager reload    #重载插件配置文件
+/groupmanager sortiton  #重置抽签记录
+
+/帮助                   #显示帮助信息
 ```
 
 
