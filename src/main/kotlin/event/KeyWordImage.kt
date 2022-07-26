@@ -15,9 +15,9 @@ import top.wyh2004.group.manager.plugin.utils.StringUtils
  * @date 2022/06/10
  **/
 class KeyWordImage : SimpleListenerHost() {
-    private val skipJava = listOf<String>("跳过java基础的bukkit玩家","没学java","跳过java", "未学java")
-    private val iDontKnowList = listOf<String>("为什么","是什么","怎么做","求助","怎么办","怎么弄","怎么实现","咋弄","咋办","为啥","请问","怎么写")
-    private val NPE = listOf<String>("nullpointerexception","npe","null","空指针")
+    private val skipJava = listOf("跳过java基础的bukkit玩家","没学java","跳过java", "未学java")
+    private val iDontKnowList = listOf("为什么","是什么","怎么做","求助","怎么办","怎么弄","怎么实现","咋弄","咋办","为啥","请问","怎么写")
+    private val NPE = listOf("nullpointerexception","npe","null","空指针")
 
     @EventHandler
     suspend fun GroupMessageEvent.onEvent(){
@@ -33,7 +33,7 @@ class KeyWordImage : SimpleListenerHost() {
                 return
             }
             if(StringUtils.containsList(iDontKnowList,msg)){
-                val imgList = listOf<String>(
+                val imgList = listOf(
                     "/img/iDontKnow.jpg",
                     "/img/youCanSearch1.jpg",
                     "/img/youCanSearch2.jpg",

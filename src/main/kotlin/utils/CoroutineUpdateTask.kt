@@ -1,8 +1,7 @@
 package top.wyh2004.group.manager.plugin.utils
 
 import kotlinx.coroutines.*
-import top.wyh2004.group.manager.plugin.PluginMain
-import top.wyh2004.group.manager.plugin.TextCommand.Sortition
+import top.wyh2004.group.manager.plugin.textCommand.Sortition
 import java.util.*
 
 /**
@@ -11,15 +10,19 @@ import java.util.*
  **/
 class CoroutineUpdateTask {
 
+    private var scope: CoroutineScope? = null
+
     fun scheduleUpdate(interval: Long){
-        PluginMain.launch(Dispatchers.IO) {
+        cancel()
+        val scope = CoroutineScope(Dispatchers.IO)
+        scope.launch {
             while (isActive){
                 try {
                     val c = Calendar.getInstance()
                     val hour = c.get(Calendar.HOUR_OF_DAY)
                     val minute = c.get(Calendar.MINUTE)
                     if(hour == 0 && minute == 0){
-                        Sortition.clearList()
+                        Sortition.qqSortitionList.clear()
                         Sortition.resetMap.clear()
                     }
                 }catch (e: Exception){
@@ -29,6 +32,12 @@ class CoroutineUpdateTask {
                 delay(interval)
             }
         }
+        this.scope = scope
+    }
+
+    private fun cancel(){
+        scope?.cancel()
+        scope = null
     }
 
 }

@@ -1,7 +1,6 @@
-package top.wyh2004.group.manager.plugin.TextCommand
+package top.wyh2004.group.manager.plugin.textCommand
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.SimpleListenerHost
 import net.mamoe.mirai.event.events.GroupMessageEvent
@@ -10,16 +9,17 @@ import net.mamoe.mirai.message.data.PlainText
 import net.mamoe.mirai.message.data.buildMessageChain
 import net.mamoe.mirai.utils.ExternalResource.Companion.toExternalResource
 import top.wyh2004.group.manager.plugin.PluginMain
+import java.util.*
 
 /**
  * @author WYH2004
  * @date 2022/7/21
  **/
-class Sortition() : SimpleListenerHost() {
+class Sortition : SimpleListenerHost() {
 
     @EventHandler
-    suspend fun GroupMessageEvent.onEvent(){
-        if (message.toString().contains("#抽签")){
+    suspend fun GroupMessageEvent.onEvent() {
+        if (message.toString().contains("#抽签")) {
             val times = resetMap[sender.id]
             if (times != null && !qqSortitionList.contains(sender.id)) {
                 if (times > 3) {
@@ -45,7 +45,7 @@ class Sortition() : SimpleListenerHost() {
                 qqSortitionList.add(sender.id)
                 return
             }
-            if (!qqSortitionList.contains(sender.id)){
+            if (!qqSortitionList.contains(sender.id)) {
                 val imgList = listOf(
                     "/img/sortition/--.jpg",
                     "/img/sortition/-.jpg",
@@ -66,7 +66,7 @@ class Sortition() : SimpleListenerHost() {
                 group.sendMessage(msg)
                 qqSortitionList.add(sender.id)
                 return
-            }else{
+            } else {
                 group.sendMessage(At(sender.id) + PlainText("\n") + "你今天已经抽过签了!")
                 return
             }
@@ -75,9 +75,26 @@ class Sortition() : SimpleListenerHost() {
 
     companion object {
         val resetMap = mutableMapOf<Long, Int>()
-        var qqSortitionList : MutableList<Long> = mutableListOf()
-        fun clearList() {
-            qqSortitionList.clear()
+        var qqSortitionList: MutableList<Long> = mutableListOf()
+
+        fun timer(interval: Long) {
+            PluginMain.launch(Dispatchers.IO) {
+                while (isActive) {
+                    try {
+                        val c = Calendar.getInstance()
+                        val hour = c.get(Calendar.HOUR_OF_DAY)
+                        val minute = c.get(Calendar.MINUTE)
+                        if (hour == 0 && minute == 0) {
+                            qqSortitionList.clear()
+                            resetMap.clear()
+                        }
+                    } catch (e: Exception) {
+                        if (e is CancellationException) throw e
+                        e.printStackTrace()
+                    }
+                    delay(interval)
+                }
+            }
         }
     }
 }

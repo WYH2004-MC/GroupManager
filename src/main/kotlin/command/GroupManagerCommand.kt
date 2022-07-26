@@ -5,7 +5,7 @@ import net.mamoe.mirai.console.command.CompositeCommand
 import net.mamoe.mirai.console.plugin.version
 import net.mamoe.mirai.utils.MiraiLogger
 import top.wyh2004.group.manager.plugin.PluginMain
-import top.wyh2004.group.manager.plugin.TextCommand.Sortition
+import top.wyh2004.group.manager.plugin.textCommand.Sortition
 
 /**
  * @author WYH2004
@@ -47,7 +47,7 @@ object GroupManagerCommand : CompositeCommand(
                 Sortition.qqSortitionList.remove(it.id)
                 sendMessage("已重置你的抽签记录!")
             } ?: run {
-                Sortition.clearList()
+                Sortition.qqSortitionList.clear()
                 sendMessage("已重置抽签记录!")
             }
         } catch (ex: Exception) {

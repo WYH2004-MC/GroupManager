@@ -9,9 +9,7 @@ class StringUtils {
         fun containsList(stringList : List<String>, string: String):Boolean{
             val it: Iterator<*> = stringList.iterator()
             while (it.hasNext()) {
-                if (string.contains(it.next().toString())){
-                    return true
-                }
+                return string.contains(it.next().toString())
             }
             return false
         }

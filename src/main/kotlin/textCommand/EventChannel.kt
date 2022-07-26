@@ -1,4 +1,4 @@
-package top.wyh2004.group.manager.plugin.TextCommand
+package top.wyh2004.group.manager.plugin.textCommand
 
 import net.mamoe.mirai.event.globalEventChannel
 import top.wyh2004.group.manager.plugin.PluginMain
