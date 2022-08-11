@@ -22,6 +22,7 @@ class GroupRequestAutoAccept : SimpleListenerHost() {
                     accept()
                 }
             }
+            return
         }
     }
 }

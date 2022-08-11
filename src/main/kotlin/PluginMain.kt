@@ -23,7 +23,7 @@ import top.wyh2004.group.manager.plugin.event.MemberJoinQuitGroupMessage
     JvmPluginDescription(
         id = "top.wyh2004.group-manager",
         name = "GroupManager",
-        version = "0.1.6"
+        version = "0.1.7"
     ) {
         author("WYH2004")
     }

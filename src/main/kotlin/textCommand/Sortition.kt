@@ -1,12 +1,15 @@
 package top.wyh2004.group.manager.plugin.textCommand
 
 import kotlinx.coroutines.*
+import net.mamoe.mirai.contact.Group
+import net.mamoe.mirai.contact.Member
 import net.mamoe.mirai.event.EventHandler
 import net.mamoe.mirai.event.SimpleListenerHost
 import net.mamoe.mirai.event.events.GroupMessageEvent
 import net.mamoe.mirai.message.data.At
 import net.mamoe.mirai.message.data.PlainText
 import net.mamoe.mirai.message.data.buildMessageChain
+import net.mamoe.mirai.utils.ExternalResource
 import net.mamoe.mirai.utils.ExternalResource.Companion.toExternalResource
 import top.wyh2004.group.manager.plugin.PluginMain
 import java.util.*
@@ -32,17 +35,7 @@ class Sortition : SimpleListenerHost() {
                     "/img/sortition/-----.jpg"
                 )
                 val ex = PluginMain::class.java.getResourceAsStream(imgList[times - 1])!!.toExternalResource()
-                val img = group.uploadImage(ex)
-                withContext(Dispatchers.IO) {
-                    ex.close()
-                }
-                val msg = buildMessageChain {
-                    +At(sender.id)
-                    +PlainText("\n")
-                    +img
-                }
-                group.sendMessage(msg)
-                qqSortitionList.add(sender.id)
+                sendImageMsg(group,sender,ex)
                 return
             }
             if (!qqSortitionList.contains(sender.id)) {
@@ -54,23 +47,28 @@ class Sortition : SimpleListenerHost() {
                     "/img/sortition/++.jpg"
                 )
                 val ex = PluginMain::class.java.getResourceAsStream(imgList.random())!!.toExternalResource()
-                val img = group.uploadImage(ex)
-                withContext(Dispatchers.IO) {
-                    ex.close()
-                }
-                val msg = buildMessageChain {
-                    +At(sender.id)
-                    +PlainText("\n")
-                    +img
-                }
-                group.sendMessage(msg)
-                qqSortitionList.add(sender.id)
+                sendImageMsg(group,sender,ex)
                 return
             } else {
                 group.sendMessage(At(sender.id) + PlainText("\n") + "你今天已经抽过签了!")
                 return
             }
         }
+    }
+
+    private suspend fun sendImageMsg(group: Group, sender : Member, ex: ExternalResource) {
+        val img = group.uploadImage(ex)
+        withContext(Dispatchers.IO) {
+            ex.close()
+        }
+        val msg = buildMessageChain {
+            +At(sender.id)
+            +PlainText("\n")
+            +img
+        }
+        group.sendMessage(msg)
+        qqSortitionList.add(sender.id)
+        return
     }
 
     companion object {
