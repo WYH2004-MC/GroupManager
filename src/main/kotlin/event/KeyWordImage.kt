@@ -16,7 +16,7 @@ import top.wyh2004.group.manager.plugin.utils.StringUtils
  **/
 class KeyWordImage : SimpleListenerHost() {
     private val skipJava = listOf("跳过java基础的bukkit玩家","没学java","跳过java", "未学java")
-    private val iDontKnowList = listOf("为什么","是什么","怎么做","求助","怎么办","怎么弄","怎么实现","咋弄","咋办","为啥","请问","怎么写")
+    private val iDontKnowList = listOf("为什么","是什么","怎么做","求助","怎么办","怎么弄","怎么实现","怎么解决","咋弄","咋办","为啥","请问","咋搞","怎么写")
     private val NPE = listOf("nullpointerexception","npe","null","空指针")
     private val G = listOf("寄")
 
@@ -64,7 +64,6 @@ class KeyWordImage : SimpleListenerHost() {
                 val imgList = listOf(
                     "/img/NPE.jpg",
                     "/img/wakeUp.jpg",
-                    ""
                 )
                 val ex = PluginMain::class.java.getResourceAsStream(imgList.random())!!.toExternalResource()
                 val img = group.uploadImage(ex)
