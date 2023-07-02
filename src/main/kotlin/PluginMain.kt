@@ -10,7 +10,6 @@ import net.mamoe.mirai.event.registerTo
 import net.mamoe.mirai.utils.info
 import top.wyh2004.group.manager.plugin.textCommand.Sortition
 import top.wyh2004.group.manager.plugin.command.GroupManagerCommand
-import top.wyh2004.group.manager.plugin.command.HelpCommand
 import top.wyh2004.group.manager.plugin.command.Minecraft
 import top.wyh2004.group.manager.plugin.config.GroupManagerConfig
 import top.wyh2004.group.manager.plugin.config.HelpConfig
@@ -18,12 +17,13 @@ import top.wyh2004.group.manager.plugin.config.KeyWordImageConfig
 import top.wyh2004.group.manager.plugin.event.GroupRequestAutoAccept
 import top.wyh2004.group.manager.plugin.event.KeyWordImage
 import top.wyh2004.group.manager.plugin.event.MemberJoinQuitGroupMessage
+import top.wyh2004.group.manager.plugin.textCommand.Help
 
-    object PluginMain : KotlinPlugin(
+object PluginMain : KotlinPlugin(
     JvmPluginDescription(
         id = "top.wyh2004.group-manager",
         name = "GroupManager",
-        version = "0.1.7"
+        version = "0.1.9"
     ) {
         author("WYH2004")
     }
@@ -48,12 +48,12 @@ import top.wyh2004.group.manager.plugin.event.MemberJoinQuitGroupMessage
 
     private fun regCommand() {
         GroupManagerCommand.register()
-        HelpCommand.register()
         CommandManager.registerCommand(Minecraft(),true)
     }
 
     private fun regTextCommand(){
         Sortition().registerTo(GlobalEventChannel)
+        Help().registerTo(GlobalEventChannel)
     }
 
     private fun regConfig(){
