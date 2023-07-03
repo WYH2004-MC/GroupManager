@@ -13,6 +13,7 @@ import net.mamoe.mirai.utils.ExternalResource
 import net.mamoe.mirai.utils.ExternalResource.Companion.toExternalResource
 import top.wyh2004.group.manager.plugin.PluginMain
 import java.util.*
+import kotlin.math.pow
 
 /**
  * @author WYH2004
@@ -35,19 +36,30 @@ class Sortition : SimpleListenerHost() {
                     "/img/sortition/-----.jpg"
                 )
                 val ex = PluginMain::class.java.getResourceAsStream(imgList[times - 1])!!.toExternalResource()
-                sendImageMsg(group,sender,ex)
+                var img = group.uploadImage(ex)
+                group.sendMessage(At(sender.id) + PlainText("\n") + img + PlainText("\n") + "你今天的幸运值已经变成:-${(10* (10.0.pow(times.toDouble()))).toInt()}")
+                qqSortitionList.add(sender.id)
+                ex.close()
                 return
             }
             if (!qqSortitionList.contains(sender.id)) {
-                val imgList = listOf(
-                    "/img/sortition/--.jpg",
-                    "/img/sortition/-.jpg",
-                    "/img/sortition/-+.jpg",
-                    "/img/sortition/+.jpg",
-                    "/img/sortition/++.jpg"
-                )
-                val ex = PluginMain::class.java.getResourceAsStream(imgList.random())!!.toExternalResource()
-                sendImageMsg(group,sender,ex)
+                val lucky = (0..100).random()
+                val ex : ExternalResource
+                if (lucky <= 20){
+                    ex = PluginMain::class.java.getResourceAsStream("/img/sortition/--.jpg")!!.toExternalResource()
+                }else if(lucky <= 40){
+                    ex = PluginMain::class.java.getResourceAsStream("/img/sortition/-.jpg")!!.toExternalResource()
+                }else if(lucky <= 60){
+                    ex = PluginMain::class.java.getResourceAsStream("/img/sortition/-+.jpg")!!.toExternalResource()
+                }else if(lucky <= 80){
+                    ex = PluginMain::class.java.getResourceAsStream("/img/sortition/+.jpg")!!.toExternalResource()
+                }else{
+                    ex = PluginMain::class.java.getResourceAsStream("/img/sortition/++.jpg")!!.toExternalResource()
+                }
+                var img = group.uploadImage(ex)
+                group.sendMessage(At(sender.id) + PlainText("\n") + img + PlainText("\n") + "你今天的幸运值为:${lucky}")
+                qqSortitionList.add(sender.id)
+                ex.close()
                 return
             } else {
                 group.sendMessage(At(sender.id) + PlainText("\n") + "你今天已经抽过签了!")

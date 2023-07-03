@@ -23,7 +23,7 @@ object PluginMain : KotlinPlugin(
     JvmPluginDescription(
         id = "top.wyh2004.group-manager",
         name = "GroupManager",
-        version = "0.1.9"
+        version = "0.2.0"
     ) {
         author("WYH2004")
     }
