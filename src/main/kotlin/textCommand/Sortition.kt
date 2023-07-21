@@ -23,7 +23,7 @@ class Sortition : SimpleListenerHost() {
 
     @EventHandler
     suspend fun GroupMessageEvent.onEvent() {
-        if (message.toString().contains("#抽签")) {
+        if (message.toString().equals("#抽签")) {
             val times = resetMap[sender.id]
             if (times != null && !qqSortitionList.contains(sender.id)) {
                 if (times > 3) {
